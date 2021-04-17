@@ -1,0 +1,63 @@
+import java.util.*; 
+public class Main {
+    public static void main(String args[]) {
+      
+    Scanner sc= new Scanner(System.in);  
+    String str= sc.next(); 
+    int n=str.length();
+  //  System.out.print(n);   
+    
+     ArrayList<Integer> even = new ArrayList<Integer>();
+     ArrayList<Integer> odd = new ArrayList<Integer>();
+     int spc=0;
+    for(int i=0;i<n;i++)
+    {
+        if(Character.isAlphabetic(str.charAt(i))==false && Character.isDigit(str.charAt(i))==false )
+        {
+                      spc++;
+        }
+        if(str.charAt(i)>='0' && str.charAt(i)<='9')
+        {
+            int no=Character.getNumericValue(str.charAt(i));
+            if(no%2==1)
+            {
+                 odd.add(no);
+            }  
+            else
+            {
+                even.add(no);
+            }
+        }
+    } 
+      int start=0;
+      if(spc%2==0)
+       start=1;
+
+     int i=0,j=0;
+     while(i<even.size() && j<odd.size())
+     {
+         if(start==1)
+         {
+             System.out.print(even.get(i));
+             i++;
+             start=0;
+         }
+         else
+         {
+            System.out.print(odd.get(j));
+            j++;
+            start=1;
+         }
+     }  
+     while(i<even.size())
+     {
+         System.out.print(even.get(i));
+         i++;
+     }
+     while(j<odd.size())
+     {
+         System.out.print(odd.get(j));
+         j++;
+     }
+    }
+}
