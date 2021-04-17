@@ -30,7 +30,7 @@ public class Main {
         }
     } 
       int start=0;
-      if(spc%2==0)
+       if(spc%2==0)
        start=1;
 
      int i=0,j=0;
