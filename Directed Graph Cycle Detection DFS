@@ -1,0 +1,35 @@
+class Solution {
+    public boolean dfs( ArrayList<ArrayList<Integer>> adj, int []vis, int []cur,int i)
+    {
+         vis[i]=1;
+         cur[i]=1;
+         
+         for(Integer j: adj.get(i))
+         {
+             
+             if(vis[j]==0)
+             {
+                 if(dfs(adj,vis,cur,j))
+                 return true;
+             }
+             else if(cur[j]==1)
+             {
+                 return true;
+             }
+         }
+         cur[i]=0;
+         return false;
+    }
+    public boolean isCyclic(int V, ArrayList<ArrayList<Integer>> adj) {
+        
+        int vis[]=new int[V],cur[]=new int[V];
+        
+        for(int i=0;i<V;i++)
+        {
+            if(vis[i]==0)
+            if(dfs(adj,vis,cur,i))
+            return true;
+        }
+        return false;
+    }
+}
