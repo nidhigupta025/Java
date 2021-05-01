@@ -1,0 +1,31 @@
+class Solution {
+    static int []ans;
+    static int count;
+    static void dfs(ArrayList<ArrayList<Integer>> adj, int i, int[] vis)
+    {
+         
+         vis[i]=1;
+         
+         for(Integer cur:adj.get(i))
+         {
+             if(vis[cur]==0)
+             dfs(adj,cur,vis);
+         }
+         
+         ans[count--]=i;
+    }
+    static int[] topoSort(int V, ArrayList<ArrayList<Integer>> adj) {
+        // add your code here
+        int []vis=new int[V];
+        count=V-1;
+        ans=new int[V];
+        for(int i=0;i<V;i++)
+        {
+            if(vis[i]==0)
+            dfs(adj,i,vis);
+        }
+        // for(Integer i:ans)
+        // System.out.print(i+" ");
+        return ans;
+    }
+}
